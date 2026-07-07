@@ -23,20 +23,20 @@ Constraints:
  */
 object Solution {
   def sumAndMultiply(n: Int): Long = {
-    def loop(num: Int, idx: Int, x: Int, sum: Int): (Int, Int) = {
+    @annotation.tailrec
+    def loop(num: Int, multiplier: Long, x: Long, sum: Int): Long = {
       if (num == 0) {
-        (x, sum)
+        x * sum
       } else {
         val rem = num % 10
         if (rem > 0) {
-          loop(num / 10, idx + 1, x + (rem * math.pow(10, idx).toInt), sum + rem)
+          loop(num / 10, multiplier * 10, x + (rem * multiplier), sum + rem)
         } else {
-          loop(num / 10, idx, x, sum)
+          loop(num / 10, multiplier, x, sum)
         }
       }
     }
 
-    val (x, sum) = loop(n, 0, 0, 0)
-    x.toLong * sum
+    loop(n, 1L, 0L, 0)
   }
 }
