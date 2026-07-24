@@ -31,20 +31,17 @@ from typing import List
 
 class Solution:
     def uniqueXorTriplets(self, nums: List[int]) -> int:
-        result = set()
         n = len(nums)
+        intermediate_result = {
+            nums[j] ^ nums[k]
+            for j in range(n)
+            for k in range(j, n)
+        }
 
-        intermediate_result = set()
-        for j in range(n):
-            for k in range(j, n):
-                xor_value = nums[j] ^ nums[k]
-                intermediate_result.add(xor_value)
-
-        intermediate_result = list(intermediate_result)
-        m = len(intermediate_result)
-        for i in range(n):
-            for j in range(m):
-                xor_value = nums[i] ^ intermediate_result[j]
-                result.add(xor_value)
+        result = {
+            num ^ x
+            for num in nums
+            for x in intermediate_result
+        }
 
         return len(result)
