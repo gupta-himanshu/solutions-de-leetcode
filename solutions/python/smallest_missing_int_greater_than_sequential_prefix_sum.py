@@ -26,6 +26,7 @@ Constraints:
 * 1 <= nums.length <= 50
 * 1 <= nums[i] <= 50
 """
+from typing import List
 
 
 class Solution:
