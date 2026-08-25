@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 /**
  * Problem 3718. Smallest Missing Multiple of K
  *
@@ -23,6 +25,7 @@
  */
 object Solution {
   def missingMultiple(nums: Array[Int], k: Int): Int = {
+    @tailrec
     def getMultiple(nums: Set[Int], k: Int, multiple: Int): Int = {
       if (nums.contains(multiple)) {
         getMultiple(nums, k, multiple + k)
