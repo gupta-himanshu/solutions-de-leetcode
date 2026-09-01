@@ -1,4 +1,5 @@
 """
+Problem 3568. Minimum Moves to Clean the Classroom
 You are given an m x n grid classroom where a student volunteer is tasked with cleaning up litter scattered around the
 room. Each cell in the grid is one of the following:
 * 'S': Starting position of the student
