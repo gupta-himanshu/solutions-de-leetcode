@@ -39,6 +39,9 @@ Constraints:
 - The number of nodes in the list is in the range [2, 105].
 - 1 <= Node.val <= 105
 """
+from typing import Optional, List
+
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
