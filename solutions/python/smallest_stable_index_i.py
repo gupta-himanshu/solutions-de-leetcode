@@ -48,6 +48,9 @@ class Solution:
 
         for i in range(n):
             instability_score = (max(nums[0:i+1]) - min(nums[i:n]))
-            min_stable_idx = i if instability_score <= k and i < min_stable_idx else min_stable_idx
+            if instability_score <= k and i < min_stable_idx:
+                return i
+            else:
+                continue
 
-        return min_stable_idx if min_stable_idx != float('inf') else -1
+        return -1
