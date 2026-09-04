@@ -38,8 +38,8 @@ answer is 0.
 
 Constraints:
 - 1 <= nums.length <= 100
-- 0 <= nums[i] <= 109
-- 0 <= k <= 109
+- 0 <= nums[i] <= 10^9
+- 0 <= k <= 10^9
 """
 class Solution:
     def firstStableIndex(self, nums: list[int], k: int) -> int:
