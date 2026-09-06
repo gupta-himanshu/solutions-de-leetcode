@@ -32,7 +32,7 @@ Explanation:
 
 
 Constraints:
--10 <= n <= 109
+-10 <= n <= 10^9
 """
 class Solution:
     def maxProduct(self, n: int) -> int:
