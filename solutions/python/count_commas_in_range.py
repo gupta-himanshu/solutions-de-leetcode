@@ -20,7 +20,7 @@ Explanation: All numbers from 1 to 998 have fewer than four digits. Therefore, n
 
 
 Constraints:
--1 <= n <= 105
+- 1 <= n <= 10^5
 """
 class Solution:
     def countCommas(self, n: int) -> int:
