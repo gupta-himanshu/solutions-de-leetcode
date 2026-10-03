@@ -26,17 +26,34 @@
  */
 object Solution {
   def longestValidParentheses(s: String): Int = {
-    s.zipWithIndex.foldLeft((0, List(-1))){case((best, stack), (ch, i)) =>
+    // FP Version
+//    s.zipWithIndex.foldLeft((0, List(-1))){case((best, stack), (ch, i)) =>
+//      if (ch == '(') {
+//        (best, stack :+ i)
+//      } else {
+//        val midStack = stack.dropRight(1)
+//        if (midStack.isEmpty) {
+//          (best, midStack :+ i)
+//        } else {
+//          (best.max(i - midStack.lastOption.getOrElse(0)), midStack)
+//        }
+//      }
+//    }._1
+    // Non-FP Version
+val stack = scala.collection.mutable.ListBuffer[Int](-1)
+    s.zipWithIndex.foldLeft(0){case(best, (ch, i)) =>
       if (ch == '(') {
-        (best, stack :+ i)
+        stack += i
+        best
       } else {
-        val midStack = stack.dropRight(1)
-        if (midStack.isEmpty) {
-          (best, midStack :+ i)
+        stack.dropRightInPlace(1)
+        if (stack.isEmpty) {
+          stack += i
+          best
         } else {
-          (best.max(i - midStack.lastOption.getOrElse(0)), midStack)
+          best.max(i - stack.lastOption.getOrElse(0))
         }
       }
-    }._1
+    }
   }
 }
