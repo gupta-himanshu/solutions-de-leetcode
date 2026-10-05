@@ -32,13 +32,12 @@ object Solution {
   def scoreOfParentheses(s: String): Int = {
     s.foldLeft(List(0)){case(stack, ch) =>
       if (ch == '(') {
-        stack :+ 0
+        0 :: stack
       } else {
-        val lastTwo = stack.takeRight(2)
-        val last = lastTwo.last
-        val secondLast = lastTwo.head
-        stack.dropRight(2) :+ (secondLast + (2 * last).max(1))
+        val last = stack.head
+        val secondLast = stack.tail.head
+        (secondLast + (2 * last).max(1)) :: stack.drop(2)
       }
-    }.last
+    }.head
   }
 }
