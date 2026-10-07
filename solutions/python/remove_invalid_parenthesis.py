@@ -25,8 +25,12 @@ Constraints:
 - s consists of lowercase English letters and parentheses '(' and ')'.
 - There will be at most 20 parentheses in s.
 """
+from functools import cache
+
+
 class Solution:
     def removeInvalidParentheses(self, s: str) -> list[str]:
+        @cache
         def invalid_parenthesis_count(st: str) -> int:
             stack = []
             unpaired_closing_parenthesis_count = 0
@@ -45,6 +49,7 @@ class Solution:
         num_invalid_brackets = invalid_parenthesis_count(s)
 
         ans = set()
+        @cache
         def generate_valid_parenthesis(s: str, i: int, count: int, valid_s: str):
             if count == 0 and len(valid_s) == len(s) - num_invalid_brackets:
                 ans.add(valid_s)
