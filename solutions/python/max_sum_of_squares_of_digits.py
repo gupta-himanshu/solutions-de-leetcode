@@ -41,21 +41,15 @@ Constraints:
 """
 class Solution:
     def maxSumOfSquares(self, num: int, sum: int) -> str:
-        stack = []
-        s = sum
-        while s > 0:
-            if s > 9:
-                stack.append("9")
-                s -= 9
-            else:
-                stack.append(str(s))
-                s = 0
+        nines = "9" * (sum // 9)
+        remainder_after_nines = str(sum % 9)
+        starting_str = nines if remainder_after_nines == "0" else nines + remainder_after_nines
 
-        stack_len = len(stack)
-        if stack_len > num:
+        starting_str_len = len(starting_str)
+        if starting_str_len > num:
             return ""
-        elif stack_len == num:
-            return "".join(stack)
+        elif starting_str_len == num:
+            return starting_str
         else:
-            remaining_str = "".join(["0"] * (num - stack_len))
-            return "".join(stack) + remaining_str
+            remaining_str = "".join(["0"] * (num - starting_str_len))
+            return starting_str + remaining_str
