@@ -36,4 +36,3 @@ object Solution {
     nums.zipWithIndex.filter{case(num, idx) => num != idx}.map(_._1).reduceOption(_ & _).getOrElse(0)
   }
 }
-
