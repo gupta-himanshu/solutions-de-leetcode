@@ -48,11 +48,12 @@ class Solution:
 
         for i in range(n):
             j = i + 1
+            cost = costs[j - 1]
             if i == 0:
-                dp[j] = dp[i] + costs[j - 1] + (j - i)**2
+                dp[j] = dp[i] + cost + (j - i) ** 2
             elif i == 1:
-                dp[j] = min([dp[i - 1] + costs[j - 1] + (j - (i - 1))**2, dp[i] + costs[j - 1] + (j - i)**2])
+                dp[j] = min([dp[i - 1] + cost + (j - (i - 1)) ** 2, dp[i] + cost + (j - i) ** 2])
             else:
-                dp[j] = min([dp[i - 2] + costs[j - 1] + (j - (i - 2))**2, dp[i - 1] + costs[j - 1] + (j - (i - 1))**2, dp[i] + costs[j - 1] + (j - i)**2])
+                dp[j] = min([dp[i - 2] + cost + (j - (i - 2)) ** 2, dp[i - 1] + cost + (j - (i - 1)) ** 2, dp[i] + cost + (j - i) ** 2])
 
         return dp[n]
