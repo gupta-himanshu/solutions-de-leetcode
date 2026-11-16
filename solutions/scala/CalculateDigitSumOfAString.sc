@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 /**
  * Problem 2243. Calculate Digit Sum of a String
  *
@@ -39,6 +41,7 @@
  * - s consists of digits only.
  */
 object Solution {
+  @tailrec
   def digitSum(s: String, k: Int): String = {
     if (s.length <= k) {
       s
